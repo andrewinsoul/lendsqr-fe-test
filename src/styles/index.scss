@@ -1,0 +1,254 @@
+@import "reset";
+@import "variables";
+@import "mixins";
+
+.flex {
+  display: flex;
+}
+.none {
+  display: none;
+}
+.block {
+  display: block;
+}
+.inline {
+  display: inline;
+}
+.flex-row {
+  flex-direction: row;
+}
+.flex-col {
+  flex-direction: column;
+}
+.mx-1 {
+  margin: 0 10%;
+}
+.w-2\/25 {
+  width: 80%;
+}
+.w-full {
+  width: 100%;
+}
+// --
+.p-10px {
+  padding: $w10-px;
+}
+
+.mt-40px {
+  margin-top: $w40-px;
+}
+.mt-20px {
+  margin-top: $w20-px;
+}
+.h-full {
+  height: 100%;
+}
+
+.left-shadow {
+  @include left-shadow(rgba(200, 200, 200, 0.2));
+}
+.align-start {
+  @include flex-item-position(start);
+}
+.bold {
+  font-weight: bold;
+}
+
+.text-left {
+  @include text-align(left);
+}
+.login {
+  font-family: "Avenir Next";
+}
+.ml-50px {
+  margin-left: $w50-px;
+}
+
+.mb-90px {
+  margin-bottom: $w90-px;
+}
+
+.w-1\/2 {
+  width: $s-half;
+}
+
+.pri-text-color-1 {
+  color: $primary-color1;
+}
+.pri-text-color-2 {
+  color: $primary-color2;
+}
+.pri-bg-color-2 {
+  background-color: $primary-color2;
+}
+.sec-text-color-1 {
+  color: $secondary-color1;
+}
+.text-lg {
+  font-size: $w20-px;
+}
+
+.flex-space-around {
+  justify-content: space-around;
+}
+.flex-space-between {
+  justify-content: space-between;
+}
+.w-7\/10 {
+  width: 70%;
+}
+.w-1\/50 {
+  width: 0.2rem;
+}
+.flex-justify-center {
+  justify-content: center;
+}
+.w-1\/4 {
+  width: $s-quarter;
+}
+.ml-20px {
+  margin-left: 20px;
+}
+.no-outline {
+  outline: none;
+}
+.p-10px {
+  padding: 10px;
+}
+.mt-30px {
+  margin-top: 30px;
+}
+.text-size-12 {
+  @include normal-font-size();
+}
+.text-white {
+  color: #fff;
+}
+.rounded-sm {
+  border-radius: 4px;
+}
+.bw-1 {
+  border-width: 1px;
+}
+
+.grey-border-color {
+  border-color: rgba(200, 200, 200, 0.4);
+}
+.red-border-color {
+  border-color: $error-color;
+}
+.primary2-border-color {
+  border-color: $primary-color2;
+}
+.b-solid {
+  border-style: solid;
+}
+.b-none {
+  border-style: none;
+}
+.flex-align-center {
+  align-items: center;
+}
+.mb-0 {
+  margin-bottom: 0;
+}
+.pointer {
+  cursor: pointer;
+}
+.red-text {
+  color: $error-color;
+}
+
+@media (min-width: 768px) {
+  .md\:flex {
+    display: flex;
+  }
+  .md\:none {
+    display: none;
+  }
+  .md\:flex-col {
+    flex-direction: column;
+  }
+  .md\:flex-row {
+    flex-direction: row;
+  }
+  .md\:block {
+    display: block;
+  }
+  .md\:inline {
+    display: inline;
+  }
+  .md\:col {
+    flex-direction: column;
+  }
+  .md\:mx-1 {
+    margin: 0 10%;
+  }
+  .md\:w-2\/25 {
+    width: 80%;
+  }
+  .md\:w-full {
+    width: 100%;
+  }
+  .md\:p-10px {
+    padding: $w10-px;
+  }
+
+  .md\:mt-40px {
+    margin-top: $w40-px;
+  }
+  .md\:mt-20px {
+    margin-top: $w20-px;
+  }
+  .md\:left-shadow {
+    @include left-shadow(rgba(200, 200, 200, 0.2));
+  }
+  .md\:align-start {
+    @include flex-item-position(start);
+  }
+  .md\:text-left {
+    @include text-align(left);
+  }
+  .md\:ml-50px {
+    margin-left: $w50-px;
+  }
+  .md\:mb-90px {
+    margin-bottom: $w90-px;
+  }
+  .md\:mb-0 {
+    margin-bottom: 0;
+  }
+  .md\:w-1\/2 {
+    width: $s-half;
+  }
+  .md\:text-lg {
+    font-size: $w20-px;
+  }
+  .md\:flex-space-around {
+    justify-content: space-around;
+  }
+  .md\:flex-space-between {
+    justify-content: space-between;
+  }
+  .md\:w-7\/10 {
+    width: 70%;
+  }
+  .md\:w-1\/50 {
+    width: 0.2rem;
+  }
+  .md\:flex-justify-center {
+    justify-content: center;
+  }
+  .md\:ml-20px {
+    margin-left: 20px;
+  }
+  .md\:no-outline {
+    outline: none;
+  }
+  .md\:p-10px {
+    padding: 10px;
+  }
+  .md\:mt-30px {
+    margin-top: 30px;
+  }
+}

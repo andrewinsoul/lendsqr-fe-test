@@ -1,0 +1,46 @@
+@mixin flex-justify-position($position) {
+  display: flex;
+  justify-content: $position;
+}
+
+@mixin d-flex {
+  display: flex;
+}
+
+@mixin flex-item-position($position) {
+  display: flex;
+  align-items: $position;
+}
+
+@mixin flex-arrange($axis) {
+  display: flex;
+  flex-direction: $axis;
+}
+
+@mixin text-align($direction) {
+  text-align: $direction;
+}
+
+@mixin horizon-spacing($value) {
+  margin: 0 $value;
+}
+
+@mixin vert-spacing($value) {
+  margin: $value 0;
+}
+
+@mixin normal-font-size {
+  font-size: 14px;
+}
+
+@mixin large-font-size {
+  font-size: 20px;
+}
+
+@mixin input-spacing($value) {
+  @include vert-spacing($value);
+}
+
+@mixin left-shadow($color) {
+  box-shadow: -2px 0 1px $color;
+}
