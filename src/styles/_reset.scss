@@ -1,0 +1,42 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  box-shadow: 0 0 0px 1000px white inset;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: local("Avenir Next"),
+    url(../fonts/AvenirNextLTPro-Regular.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: local("Avenir Next"),
+    url(../fonts/AvenirNextLTPro-Bold.otf) format("opentype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Work Sans";
+  src: local("Work Sans"), url(../fonts/WorkSans-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Work Sans";
+  src: local("Work Sans"),
+    url(../fonts/WorkSans-ExtraBold.ttf) format("truetype");
+  font-weight: bold;
+}
+
+body {
+  margin: 0;
+  font-family: "Work Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
