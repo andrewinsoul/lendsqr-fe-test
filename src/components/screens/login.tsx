@@ -1,7 +1,6 @@
 import { useCallback, useState } from "react";
 import logo from "../../images/svgs/logo.svg";
 import loginPhoto from "../../images/svgs/signin-photo.svg";
-import "../../styles/index.scss";
 
 const emailRe = /^([a-z0-9_\-.]+)@([a-z]+)\.([a-z]{2,3})$/;
 

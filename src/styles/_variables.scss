@@ -17,16 +17,30 @@ $w30-px: 30px;
 $w40-px: 40px;
 $w90-px: 90px;
 $w140-px: 140px;
+$l-7-7: 7.7rem;
+$l-10: 10rem;
+
 // end here
 
 $w80-p: 80%;
-$w20-p: 20%;
+$w28-p: 28%;
 $w70-p: 70%;
-$w100-p: 100%;
 $w10-p: 10%;
-$w50-p: 50%;
+$w26-p: 26%;
+$w3-p: 3%;
+$w4-p: 4%;
+$w23-p: 23%;
+$w30-p: 30%;
 
 $primary-color1: #213f7d;
-$secondary-color1: #545f7d;
+$secondary-color1: rgb(84, 95, 125);
+$secondary-color1-faint: rgba(84, 95, 125, 0.1);
+$status-pending: rgb(233, 178, 0);
+$status-pending-faint: rgba(233, 178, 0, 0.1);
+$status-active: rgb(57, 205, 98);
+$status-active-faint: rgb(57, 205, 98, 0.1);
+$status-blacklisted: rgb(228, 3, 59);
+$status-blacklisted-faint: rgb(228, 3, 59, 0.1);
 $primary-color2: #39cdcc;
+$faint-color: rgba(200, 200, 200, 0.3);
 $error-color: #dc343b;

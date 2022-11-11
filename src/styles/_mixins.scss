@@ -7,6 +7,17 @@
   display: flex;
 }
 
+@mixin status-display($color) {
+  background-color: $color;
+  padding: 12px;
+  width: 2px;
+  border-radius: 28px;
+}
+
+@mixin text-color($color) {
+  color: $color;
+}
+
 @mixin flex-item-position($position) {
   display: flex;
   align-items: $position;
@@ -17,7 +28,7 @@
   flex-direction: $axis;
 }
 
-@mixin text-align($direction) {
+@mixin text-align-pos($direction) {
   text-align: $direction;
 }
 
@@ -29,8 +40,8 @@
   margin: $value 0;
 }
 
-@mixin normal-font-size {
-  font-size: 14px;
+@mixin normal-font-size($size) {
+  font-size: $size;
 }
 
 @mixin large-font-size {
@@ -43,4 +54,8 @@
 
 @mixin left-shadow($color) {
   box-shadow: -2px 0 1px $color;
+}
+
+@mixin workSans-family {
+  font-family: "Work Sans";
 }
