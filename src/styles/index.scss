@@ -32,6 +32,12 @@
 .auth {
   @include workSans-family;
 }
+.link:hover {
+  border-left-width: 5px;
+  border-left-style: solid;
+  border-left-color: $primary-color2;
+  background-color: $primary-color2-faint;
+}
 .block {
   display: block;
 }
@@ -47,6 +53,9 @@
 .mx-1 {
   margin: 0 10%;
 }
+.pl-60px {
+  padding-left: 60px;
+}
 .w-2\/25 {
   width: 80%;
 }
@@ -59,6 +68,12 @@
 }
 .h-full {
   height: 100%;
+}
+.h-2px {
+  height: 2px;
+}
+.m-0 {
+  margin: 0;
 }
 .left-shadow {
   @include left-shadow(rgba(200, 200, 200, 0.2));
@@ -103,6 +118,9 @@
 }
 .mb-4p {
   margin-bottom: 4%;
+}
+.mb-10px {
+  margin-bottom: $w10-px;
 }
 .mb-90px {
   margin-bottom: $w90-px;
@@ -192,6 +210,9 @@
 .mt-30px {
   margin-top: 30px;
 }
+.mt-0 {
+  margin-top: 0;
+}
 .text-size-12 {
   @include normal-font-size(12px);
 }
@@ -215,6 +236,10 @@
   padding-top: 6px;
   padding-bottom: 6px;
 }
+.py-10px {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 .py-16px {
   padding-top: 16px;
   padding-bottom: 16px;
@@ -229,6 +254,9 @@
 .py-none {
   padding-top: 0;
   padding-bottom: 0;
+}
+.bg-none {
+  background-color: transparent;
 }
 .size-13px {
   font-size: 13px;
@@ -263,6 +291,9 @@
 }
 .pointer {
   cursor: pointer;
+}
+.auto {
+  cursor: auto;
 }
 .red-text {
   color: $error-color;
@@ -357,6 +388,20 @@
 }
 d-inline {
   display: inline;
+}
+.text-secondary-color-thin {
+  color: $secondary-color1-thin;
+}
+.my-10px {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.hamburger {
+  @include hamburger;
+}
+.my-6px {
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
 .title {
   text-transform: capitalize;
@@ -632,5 +677,24 @@ d-inline {
   }
   .lg\:flex-col {
     flex-direction: column;
+  }
+  .lg\:py-10px {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .lg\:mx-8px {
+    margin: 0 8px;
+  }
+  .lg\:mb-10px {
+    margin-bottom: $w10-px;
+  }
+  .lg\:pl-30px {
+    padding-left: $w30-px;
+  }
+  .lg\:pl-60px {
+    padding-left: 60px;
+  }
+  .lg\:w-1\/4 {
+    width: $s-quarter;
   }
 }

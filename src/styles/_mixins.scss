@@ -14,6 +14,13 @@
   border-radius: 28px;
 }
 
+@mixin hamburger {
+  height: 2px;
+  margin: 0;
+  width: 25px;
+  background-color: $secondary-color1;
+}
+
 @mixin text-color($color) {
   color: $color;
 }
