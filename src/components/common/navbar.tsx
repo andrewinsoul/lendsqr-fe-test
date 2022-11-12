@@ -12,7 +12,7 @@ export const Navbar: FC<{
     <>
       <div
         className="fixed all-corn-box-shadow
-        } top-0 px-9px lg:px-4px z-3 left-0 right-0 flex flex-align-center flex-space-between bg-white py-6px lg:py-none"
+        } top-0 px-29px lg:px-4px z-3 left-0 right-0 flex flex-align-center flex-space-between bg-white py-6px lg:py-none"
       >
         <img src={logo} className="lg:ml-2rem" alt="logo-img" />
         <div className="w-30p grey-border-color p-9px rounded-sm bw-1 b-solid flex-align-center mr-10rem relative lg:block d-none">

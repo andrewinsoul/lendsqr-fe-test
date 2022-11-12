@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card } from "../common/card";
 import users from "../../images/svgs/users.svg";
 import activeUsers from "../../images/svgs/active-users.svg";
@@ -10,6 +11,8 @@ import threeDots from "../../images/svgs/three-dots.svg";
 import { Status, StatusText } from "../common/displayStatus";
 
 export const Dashboard = () => {
+  const navigate = useNavigate();
+  const [filter, setFilter] = useState("");
   const [loading, setLoaing] = useState(false);
   const [usersList, setUsersList] = useState<[] | null>([]);
 
@@ -43,86 +46,78 @@ export const Dashboard = () => {
     fetchData();
   }, []);
   return (
-    <>
-      <div className="lg:mr-3p pt-4-3r lg:pt-7-7r lg:ml-26p">
-        <p className="size-25px pri-text-color-1 normal letter-spacing mx-4p mb-4p">
-          Users
-        </p>
-        <div className="flex flex-col lg:flex-row flex-space-between mx-4p">
-          <Card title="Users" imgLink={users} value="2453" />
-          <Card title="active users" imgLink={activeUsers} value="2453" />
-          <Card
-            title="users with loans"
-            imgLink={usersWithLoans}
-            value="12453"
-          />
-          <Card
-            title="users with savings"
-            imgLink={usersWithSavings}
-            value="102453"
-          />
-        </div>
-        <div className="mx-4p p-15px mt-40px bg-white all-corn-box-shadow rounded-sm mb-90px">
-          <div className="lg:flex pri-text-color-1 d-none flex-space-between mb-30px">
-            <Filter title="organization" />
-            <Filter title="username" />
-            <Filter title="email" />
-            <Filter title="phone number" />
-            <Filter title="date joined" />
-            <Filter title="status" />
-            <img className="hidden" src={threeDots} alt="3-dots" />
-          </div>
-          {loading ? (
-            <p className="text-align-center pri-text-color-1 bold">
-              LOADING...
-            </p>
-          ) : (
-            usersList &&
-            usersList.map(
-              (
-                item: {
-                  orgName: string;
-                  userName: string;
-                  email: string;
-                  phoneNumber: string;
-                  createdAt: string;
-                  status: string;
-                },
-                index: Number
-              ) => (
-                <div
-                  key={`item-${index}-${item.phoneNumber}`}
-                  className="flex flex-row flex-space-between td-cont pri-text-color-1 flex-align-center"
-                >
-                  <div className="block lg:d-none size-13px">
-                    <div className="">
-                      <span className="bold mr-8px">Organization:</span>
-                      <span>{item.orgName}</span>
-                    </div>
-                    <div className="py-16px">
-                      <span className="bold mr-8px">Email:</span>
-                      <span>{item.email}</span>
-                    </div>
-                    <div className="flex flex-align-center">
-                      <span className="bold mr-8px">Status:</span>
-                      <StatusText status={item.status} />
-                    </div>
-                  </div>
-                  <div className="lg:td d-none lg:block">{item.orgName}</div>
-                  <div className="lg:td d-none lg:block">{item.userName}</div>
-                  <div className="lg:td d-none lg:block">{item.email}</div>
-                  <div className="lg:td d-none lg:block">
-                    {item.phoneNumber}
-                  </div>
-                  <div className="lg:td d-none lg:block">{item.createdAt}</div>
-                  <Status item={item} />
-                  <img src={threeDots} alt="3-dots" />
-                </div>
-              )
-            )
-          )}
-        </div>
+    <div className="lg:mr-3p pt-4-3r lg:pt-7-7r lg:ml-26p">
+      <p className="size-25px pri-text-color-1 normal letter-spacing mx-4p mb-4p">
+        Users
+      </p>
+      <div className="flex flex-col lg:flex-row flex-space-between mx-4p">
+        <Card title="Users" imgLink={users} value="2453" />
+        <Card title="active users" imgLink={activeUsers} value="2453" />
+        <Card title="users with loans" imgLink={usersWithLoans} value="12453" />
+        <Card
+          title="users with savings"
+          imgLink={usersWithSavings}
+          value="102453"
+        />
       </div>
-    </>
+      <div className="mx-4p p-15px mt-40px bg-white all-corn-box-shadow rounded-sm mb-90px">
+        <div className="lg:flex pri-text-color-1 d-none flex-space-between mb-30px">
+          <Filter title="organization" />
+          <Filter title="username" />
+          <Filter title="email" />
+          <Filter title="phone number" />
+          <Filter title="date joined" />
+          <Filter title="status" />
+          <img className="hidden" src={threeDots} alt="3-dots" />
+        </div>
+        {loading ? (
+          <p className="text-align-center pri-text-color-1 bold">LOADING...</p>
+        ) : (
+          usersList &&
+          usersList.map(
+            (
+              item: {
+                orgName: string;
+                userName: string;
+                email: string;
+                phoneNumber: string;
+                createdAt: string;
+                status: string;
+                id: number;
+              },
+              index: Number
+            ) => (
+              <div
+                onClick={() => navigate(`/auth/user/detail/${item.id}`)}
+                key={`item-${index}-${item.phoneNumber}`}
+                className="flex pointer flex-row flex-space-between td-cont pri-text-color-1 flex-align-center"
+              >
+                <div className="block lg:d-none size-13px">
+                  <div className="">
+                    <span className="bold mr-8px">Organization:</span>
+                    <span>{item.orgName}</span>
+                  </div>
+                  <div className="py-16px">
+                    <span className="bold mr-8px">Email:</span>
+                    <span>{item.email}</span>
+                  </div>
+                  <div className="flex flex-align-center">
+                    <span className="bold mr-8px">Status:</span>
+                    <StatusText status={item.status} />
+                  </div>
+                </div>
+                <div className="lg:td d-none lg:block">{item.orgName}</div>
+                <div className="lg:td d-none lg:block">{item.userName}</div>
+                <div className="lg:td d-none lg:block">{item.email}</div>
+                <div className="lg:td d-none lg:block">{item.phoneNumber}</div>
+                <div className="lg:td d-none lg:block">{item.createdAt}</div>
+                <Status item={item} />
+                <img src={threeDots} alt="3-dots" />
+              </div>
+            )
+          )
+        )}
+      </div>
+    </div>
   );
 };

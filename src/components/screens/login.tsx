@@ -123,7 +123,7 @@ export const Login = () => {
       const isFormValid = validate(values, true);
       if (isFormValid) {
         localStorage.setItem("token", `lue-${values.email}-xxx`);
-        navigate("/auth/dashboard");
+        navigate("/auth/dashboard", { replace: true });
       }
     } catch (error: { message: string } | any) {
       alert(error?.message || "An error occured");

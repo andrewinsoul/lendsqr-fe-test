@@ -29,6 +29,21 @@
   border-bottom-style: solid;
   border-bottom-color: $faint-color;
 }
+.linkBorderBottomLine {
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+  border-bottom-color: $primary-color2;
+}
+.borderLeftLine {
+  border-left-width: 2px;
+  border-left-style: solid;
+  border-left-color: $secondary-color1-faint;
+}
+.borderRightLine {
+  border-right-width: 2px;
+  border-right-style: solid;
+  border-right-color: $secondary-color1-faint;
+}
 .work-sans {
   @include workSans-family;
 }
@@ -53,6 +68,9 @@
 .flex-row {
   flex-direction: row;
 }
+.flex-wrap {
+  flex-wrap: wrap;
+}
 .flex-col {
   flex-direction: column;
 }
@@ -71,6 +89,9 @@
 // --
 .p-10px {
   padding: $w10-px;
+}
+.h-50vh {
+  height: 50vh;
 }
 .h-full {
   height: 100vh;
@@ -164,11 +185,12 @@
 .pri-text-color-faint {
   color: #545f7d;
 }
-.pri-text-color-2 {
-  color: $primary-color2;
-}
+
 .pri-bg-color-2 {
   background-color: $primary-color2;
+}
+.pri-bg-color-1 {
+  background-color: $primary-color1;
 }
 .sec-text-color-1 {
   color: $secondary-color1;
@@ -192,14 +214,23 @@
 .flex-justify-center {
   justify-content: center;
 }
+.flex-justify-between {
+  justify-content: space-between;
+}
 .text-align-center {
   @include text-align-pos(center);
 }
 .w-1\/4 {
   width: $s-quarter;
 }
+.pri-bg-color-1-faint {
+  background-color: $primary-color1-faint;
+}
 .ml-20px {
   margin-left: 20px;
+}
+.mr-20px {
+  margin-right: 20px;
 }
 .ml-8px {
   margin-left: 8px;
@@ -267,12 +298,13 @@
 .size-13px {
   font-size: 13px;
 }
-.px-9px {
+.px-29px {
   padding-left: 29px;
   padding-right: 29px;
 }
 .px-15px {
-  padding: 0 15px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .grey-border-color {
   border-color: rgba(200, 200, 200, 0.4);
@@ -286,6 +318,12 @@
 .b-solid {
   border-style: solid;
 }
+.b-red-color {
+  border-color: $error-color;
+}
+.b-primary-color-2 {
+  border-color: $primary-color2;
+}
 .b-none {
   border-style: none;
 }
@@ -294,6 +332,9 @@
 }
 .mb-0 {
   margin-bottom: 0;
+}
+.pt-16px {
+  padding-top: 16px;
 }
 .pointer {
   cursor: pointer;
@@ -380,6 +421,14 @@
 .mx-8px {
   margin: 0 8px;
 }
+.mx-40px {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+.px-40px {
+  padding-left: 40px;
+  padding-right: 40px;
+}
 .y-scroll {
   overflow-y: scroll;
 }
@@ -395,12 +444,22 @@
 d-inline {
   display: inline;
 }
+.w-80px {
+  width: 80px;
+}
+.h-80px {
+  height: 80px;
+}
 .text-secondary-color-thin {
   color: $secondary-color1-thin;
 }
 .my-10px {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+.my-50px {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 .hamburger {
   @include hamburger;
@@ -414,6 +473,9 @@ d-inline {
 }
 .status-inactive {
   @include status-display($secondary-color1-faint);
+}
+.text-inactive {
+  color: rgba(0, 0, 0, 0.8);
 }
 .status-inactive-text-color {
   @include text-color($secondary-color1);
@@ -444,6 +506,18 @@ d-inline {
 }
 .w-100px {
   width: 120px;
+}
+.overflow-x-auto {
+  overflow-x: auto;
+}
+.overflow-x-scroll {
+  overflow-x: scroll;
+}
+.nowrap {
+  white-space: nowrap;
+}
+.pri-text-color-2 {
+  color: $primary-color2;
 }
 @media (min-width: 768px) {
   .md\:flex {
@@ -504,9 +578,6 @@ d-inline {
   .md\:mb-90px {
     margin-bottom: $w90-px;
   }
-  .md\:mb-0 {
-    margin-bottom: 0;
-  }
   .md\:w-1\/2 {
     width: $s-half;
   }
@@ -562,8 +633,13 @@ d-inline {
     width: $w30-p;
   }
 }
-
 @media (min-width: 1024px) {
+  .lg\:overflow-x-auto {
+    overflow-x: auto;
+  }
+  .lg\:overflow-x-scroll {
+    overflow-x: scroll;
+  }
   .lg\:mb-30px {
     margin-bottom: 30px;
   }
@@ -603,7 +679,25 @@ d-inline {
   .lg\:w-40px {
     width: 40px;
   }
-  .md\:mb-0 {
+  .lg\:mx-40px {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+  .lg\:px-40px {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .lg\:borderLeftLine {
+    border-left-width: 2px;
+    border-left-style: solid;
+    border-left-color: $secondary-color1-faint;
+  }
+  .lg\:borderRightLine {
+    border-right-width: 2px;
+    border-right-style: solid;
+    border-right-color: $secondary-color1-faint;
+  }
+  .lg\:mb-0 {
     margin-bottom: 0;
   }
   .lg\:mr-10rem {
@@ -614,6 +708,9 @@ d-inline {
   }
   .lg\:bottom-0 {
     bottom: 0;
+  }
+  .lg\:m-0 {
+    margin: 0;
   }
   .lg\:left-0 {
     left: 0;
@@ -644,6 +741,10 @@ d-inline {
   }
   .lg\:mr-3p {
     margin-right: $w3-p;
+  }
+  .lg\:mx-70px {
+    margin-left: 70px;
+    margin-right: 70px;
   }
   .lg\:ml-2rem {
     margin-left: 2rem;
