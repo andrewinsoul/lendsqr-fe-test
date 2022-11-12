@@ -1,9 +1,9 @@
-import { Dashboard } from "./components/screens/dashboard";
+import { Paths as Routes } from "./components/routes";
 
 function App() {
   return (
     <div className="App">
-      <Dashboard />
+      <Routes />
     </div>
   );
 }

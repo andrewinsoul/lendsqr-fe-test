@@ -1,4 +1,5 @@
-import { FC } from "react";
+import { FC, MouseEventHandler, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import account from "../../images/svgs/account.svg";
 import audit from "../../images/svgs/audits.svg";
 import bank from "../../images/svgs/bank.svg";
@@ -27,14 +28,12 @@ const sidebarContents = [
     leftIcon: briefcase,
     rightIcon: caretDown,
     sub: null,
-    onClick: null,
   },
   {
     main: "Dashboard",
     leftIcon: home,
     rightIcon: null,
     sub: null,
-    onClick: null,
   },
   {
     main: "Customers",
@@ -45,52 +44,43 @@ const sidebarContents = [
         text: "Users",
         leftImg: userFriends,
         rightImg: null,
-        onClick: null,
       },
       {
         text: "Guarantors",
         leftImg: guarantors,
         rightImg: null,
-        onClick: null,
       },
       {
         text: "Loans",
         leftImg: loans,
         rightImg: null,
-        onClick: null,
       },
       {
         text: "Decision Models",
         leftImg: handshake,
         rightImg: null,
-        onClick: null,
       },
       {
         text: "Savings",
         leftImg: savings,
         rightImg: null,
-        onClick: null,
       },
       {
         text: "Loan Requests",
         leftImg: loanRequests,
         rightImg: null,
-        onClick: null,
       },
       {
         text: "Whitelist",
         leftImg: whiteList,
         rightImg: null,
-        onClick: null,
       },
       {
         text: "Karma",
         leftImg: karma,
         rightImg: null,
-        onClick: null,
       },
     ],
-    onClick: null,
   },
   {
     main: "Businesses",
@@ -101,58 +91,48 @@ const sidebarContents = [
         text: "Organization",
         leftImg: briefcase,
         rightImg: null,
-        onClick: null,
       },
       {
         text: "Loan Products",
         leftImg: loanRequests,
         rightImg: null,
-        onClick: null,
       },
       {
         text: "Savings Products",
         leftImg: bank,
         rightImg: null,
-        onClick: null,
       },
       {
         text: "Fees and Charges",
         leftImg: coins,
         rightImg: null,
-        onClick: null,
       },
       {
         text: "Transactions",
         leftImg: transactions,
         rightImg: null,
-        onClick: null,
       },
       {
         text: "Services",
         leftImg: services,
         rightImg: null,
-        onClick: null,
       },
       {
         text: "Service Account",
         leftImg: account,
         rightImg: null,
-        onClick: null,
       },
       {
         text: "Settlements",
         leftImg: settlement,
         rightImg: null,
-        onClick: null,
       },
       {
         text: "Reports",
         leftImg: reports,
         rightImg: null,
-        onClick: null,
       },
     ],
-    onClick: null,
   },
   {
     main: "settings",
@@ -163,27 +143,23 @@ const sidebarContents = [
         text: "Preferences",
         leftImg: preferences,
         rightImg: null,
-        onClick: null,
       },
       {
         text: "Fees and Pricing",
         leftImg: fees,
         rightImg: null,
-        onClick: null,
       },
       {
         text: "Audit Logs",
         leftImg: audit,
         rightImg: null,
-        onClick: null,
       },
     ],
-    onClick: null,
   },
 ];
 
 interface SidebarArrayContents {
-  main: string | null;
+  main: string;
   leftIcon: string | null;
   rightIcon: string | null;
   sub:
@@ -191,60 +167,176 @@ interface SidebarArrayContents {
         text: string;
         leftImg: string | null;
         rightImg: string | null;
-        onClick: Function | null;
       }[]
     | null;
-  onClick: Function | null;
 }
 
 interface SidebarSubContents {
   text: string;
   leftImg: string | null;
   rightImg: string | null;
-  onClick: Function | null;
 }
 
-export const Sidebar: FC<{ open: boolean }> = ({ open }) => {
+const resetNavState = {
+  "Switch Organization": false,
+  Dashboard: false,
+  Customers: false,
+  Users: false,
+  Guarantors: false,
+  Loans: false,
+  "Decision Models": false,
+  Savings: false,
+  "Loan Requests": false,
+  Whitelist: false,
+  Karma: false,
+  Businesses: false,
+  Organization: false,
+  "Loan Products": false,
+  "Savings Products": false,
+  "Fees and Charges": false,
+  Transactions: false,
+  Services: false,
+  "Service Account": false,
+  Settlements: false,
+  Reports: false,
+  Preferences: false,
+  "Fees and Pricing": false,
+  "Audit Logs": false,
+};
+
+export const Sidebar: FC<{
+  open: boolean;
+  toggleMenu: (key: boolean) => void;
+}> = ({ open, toggleMenu }) => {
+  const navigate = useNavigate();
+  const [navState, setNavState] = useState<
+    | any
+    | {
+        "Switch Organization": boolean;
+        Dashboard: boolean;
+        Users: boolean;
+        Guarantors: boolean;
+        Loans: boolean;
+        "Decision Models": boolean;
+        Savings: boolean;
+        "Loan Requests": boolean;
+        Whitelist: boolean;
+        Karma: boolean;
+        Organization: boolean;
+        "Loan Products": boolean;
+        "Savings Products": boolean;
+        "Fees and Charges": boolean;
+        Transactions: boolean;
+        Services: boolean;
+        "Service Account": boolean;
+        Settlements: boolean;
+        Reports: boolean;
+        Preferences: boolean;
+        "Fees and Pricing": boolean;
+        "Audit Logs": boolean;
+      }
+  >({
+    "Switch Organization": false,
+    Dashboard: false,
+    Customers: false,
+    Users: true,
+    Guarantors: false,
+    Loans: false,
+    "Decision Models": false,
+    Savings: false,
+    "Loan Requests": false,
+    Whitelist: false,
+    Karma: false,
+    Businesses: false,
+    Organization: false,
+    "Loan Products": false,
+    "Savings Products": false,
+    "Fees and Charges": false,
+    Transactions: false,
+    Services: false,
+    "Service Account": false,
+    Settlements: false,
+    Reports: false,
+    Preferences: false,
+    "Fees and Pricing": false,
+    "Audit Logs": false,
+  });
+  const onClickHandler = (item: SidebarArrayContents) => () => {
+    if (!item.sub) {
+      setNavState({ ...resetNavState, [item.main]: true });
+      if (item.main === "Switch Organization") {
+        alert("feature coming out soon");
+      } else {
+        toggleMenu(!open);
+        navigate("/auth/dashboard");
+      }
+    }
+  };
+  const subOnClickHandler = (item_: SidebarSubContents) => () => {
+    toggleMenu(!open);
+    setNavState({ ...resetNavState, [item_.text]: true });
+    if (item_.text === "Users") {
+      navigate("/auth/dashboard");
+    } else {
+      navigate("/auth/in-progress");
+    }
+  };
   return (
     <div
       className={`${
         open ? "block w-2/25" : "d-none"
       } auth lg:block fixed top-0 bottom-0 left-0 lg:w-1/4 y-scroll pt-4-3r all-corn-box-shadow hide-scrollbar bg-white`}
     >
-      {sidebarContents.map((item: SidebarArrayContents) => (
-        <div className={`mb-10px ${item.sub ? "" : "link"}`}>
+      {sidebarContents.map((item: SidebarArrayContents, index: Number) => {
+        return (
           <div
-            className={`flex py-6px pl-2rem ${
-              item.sub ? "mt-30px auto" : "mt-0 pointer"
+            onClick={onClickHandler(item)}
+            className={`mb-10px ${item.sub ? "" : "link"} ${
+              navState[item.main] ? "active" : ""
             }`}
+            key={`${item.main}-${index}`}
           >
-            {item.leftIcon ? <img src={item.leftIcon} alt="briefcase" /> : null}
-            <span className="title pri-text-color-faint mx-8px py-10px">
-              {item.main}
-            </span>
-            {item.rightIcon ? (
-              <img src={item.rightIcon} alt="caret-down" />
-            ) : null}
+            <div
+              className={`flex py-6px pl-2rem ${
+                item.sub ? "mt-30px auto" : "mt-0 pointer"
+              }`}
+            >
+              {item.leftIcon ? (
+                <img src={item.leftIcon} alt="briefcase" />
+              ) : null}
+              <span className="title pri-text-color-faint mx-8px py-10px">
+                {item.main}
+              </span>
+              {item.rightIcon ? (
+                <img src={item.rightIcon} alt="caret-down" />
+              ) : null}
+            </div>
+            <div>
+              {item.sub
+                ? item.sub.map((item_: SidebarSubContents, index: Number) => (
+                    <div
+                      onClick={subOnClickHandler(item_)}
+                      className={`flex py-6px pointer mb-10px link pl-60px ${
+                        navState[item_.text] ? "active" : ""
+                      }`}
+                      key={`${item_.text}-${index}`}
+                    >
+                      {item_.leftImg ? (
+                        <img src={item_.leftImg} alt="briefcase" />
+                      ) : null}
+                      <span className="text-secondary-color-thin mx-8px py-10px">
+                        {item_.text}
+                      </span>
+                      {item_.rightImg ? (
+                        <img src={item_.rightImg} alt="caret-down" />
+                      ) : null}
+                    </div>
+                  ))
+                : null}
+            </div>
           </div>
-          <div>
-            {item.sub
-              ? item.sub.map((item_: SidebarSubContents) => (
-                  <div className="flex py-6px pointer mb-10px link pl-60px">
-                    {item_.leftImg ? (
-                      <img src={item_.leftImg} alt="briefcase" />
-                    ) : null}
-                    <span className="text-secondary-color-thin mx-8px py-10px">
-                      {item_.text}
-                    </span>
-                    {item_.rightImg ? (
-                      <img src={item_.rightImg} alt="caret-down" />
-                    ) : null}
-                  </div>
-                ))
-              : null}
-          </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };

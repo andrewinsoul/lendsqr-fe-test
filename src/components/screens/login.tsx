@@ -1,10 +1,12 @@
 import { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "../../images/svgs/logo.svg";
 import loginPhoto from "../../images/svgs/signin-photo.svg";
 
 const emailRe = /^([a-z0-9_\-.]+)@([a-z]+)\.([a-z]{2,3})$/;
 
 export const Login = () => {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formField, setFormField] = useState({
@@ -115,13 +117,13 @@ export const Login = () => {
     [formFieldTouched, formField, validate]
   );
 
-  const handleSubmit = (values: any) => () => {
+  const handleSubmit = (values: { email: string; password: string }) => () => {
     try {
       setLoading(true);
       const isFormValid = validate(values, true);
       if (isFormValid) {
-        // do the navigation here
-        alert(JSON.stringify(values));
+        localStorage.setItem("token", `lue-${values.email}-xxx`);
+        navigate("/auth/dashboard");
       }
     } catch (error: { message: string } | any) {
       alert(error?.message || "An error occured");
