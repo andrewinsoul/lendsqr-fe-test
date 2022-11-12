@@ -29,10 +29,16 @@
   border-bottom-style: solid;
   border-bottom-color: $faint-color;
 }
-.auth {
+.work-sans {
   @include workSans-family;
 }
 .link:hover {
+  border-left-width: 5px;
+  border-left-style: solid;
+  border-left-color: $primary-color2;
+  background-color: $primary-color2-faint;
+}
+.active {
   border-left-width: 5px;
   border-left-style: solid;
   border-left-color: $primary-color2;
@@ -67,7 +73,7 @@
   padding: $w10-px;
 }
 .h-full {
-  height: 100%;
+  height: 100vh;
 }
 .h-2px {
   height: 2px;

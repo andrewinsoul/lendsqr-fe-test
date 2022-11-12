@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { Navbar } from "../common/navbar";
-import { Sidebar } from "../common/sidebar";
 import { Card } from "../common/card";
 import users from "../../images/svgs/users.svg";
 import activeUsers from "../../images/svgs/active-users.svg";
@@ -14,9 +12,6 @@ import { Status, StatusText } from "../common/displayStatus";
 export const Dashboard = () => {
   const [loading, setLoaing] = useState(false);
   const [usersList, setUsersList] = useState<[] | null>([]);
-  const [open, setOpen] = useState(false);
-
-  const toggleMenu = () => setOpen(!open);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,8 +44,6 @@ export const Dashboard = () => {
   }, []);
   return (
     <>
-      <Navbar toggleMenu={toggleMenu} />
-      <Sidebar open={open} />
       <div className="lg:mr-3p pt-4-3r lg:pt-7-7r lg:ml-26p">
         <p className="size-25px pri-text-color-1 normal letter-spacing mx-4p mb-4p">
           Users
