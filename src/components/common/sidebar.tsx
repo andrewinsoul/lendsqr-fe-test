@@ -1,4 +1,4 @@
-import { FC, MouseEventHandler, useState } from "react";
+import { FC, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import account from "../../images/svgs/account.svg";
 import audit from "../../images/svgs/audits.svg";

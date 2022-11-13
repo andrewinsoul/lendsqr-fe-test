@@ -1,11 +1,22 @@
-import { FC } from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
+import { Navbar } from "../common/navbar";
+import { Sidebar } from "../common/sidebar";
+import { Login } from "../screens/login";
 
-export const AuthenticatedRoute: FC<{ authenticated: boolean }> = ({
-  authenticated,
-}) => {
+export const AuthenticatedRoute = () => {
+  const [open, setOpen] = useState(false);
+  const toggleMenu = () => setOpen(!open);
+  const authenticated = localStorage.getItem("token");
   if (!authenticated) {
-    return <Navigate to="/login" replace />;
+    return <Login />;
+  } else {
+    return (
+      <>
+        <Navbar toggleMenu={toggleMenu} />
+        <Sidebar open={open} toggleMenu={toggleMenu} />
+        <Outlet />
+      </>
+    );
   }
-  return <Outlet />;
 };
