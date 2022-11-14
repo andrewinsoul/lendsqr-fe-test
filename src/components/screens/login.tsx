@@ -153,9 +153,7 @@ export const Login = () => {
             <>
               <div
                 className={`w-full p-10px mt-20px b-solid bw-1 ${
-                  formFieldError.email
-                    ? "red-border-color"
-                    : "grey-border-color"
+                  formFieldError.email ? "b-red-color" : "grey-border-color"
                 } rounded-sm flex flex-row flex-space-between flex-align-center`}
               >
                 <input
@@ -174,9 +172,7 @@ export const Login = () => {
             <>
               <div
                 className={`w-full p-10px mt-20px b-solid bw-1 ${
-                  formFieldError.password
-                    ? "red-border-color"
-                    : "grey-border-color"
+                  formFieldError.password ? "b-red-color" : "grey-border-color"
                 } rounded-sm flex flex-row flex-space-between flex-align-center`}
               >
                 <input

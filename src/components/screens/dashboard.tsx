@@ -10,9 +10,25 @@ import { statusEnum } from "../../constants";
 import threeDots from "../../images/svgs/three-dots.svg";
 import { Status, StatusText } from "../common/displayStatus";
 
+const resetFilter = {
+  organization: false,
+  username: false,
+  email: false,
+  phoneNumber: false,
+  status: false,
+  dateJoined: false,
+};
+
 export const Dashboard = () => {
   const navigate = useNavigate();
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState({
+    organization: false,
+    username: false,
+    email: false,
+    phoneNumber: false,
+    status: false,
+    dateJoined: false,
+  });
   const [loading, setLoaing] = useState(false);
   const [usersList, setUsersList] = useState<[] | null>([]);
 
@@ -62,12 +78,39 @@ export const Dashboard = () => {
       </div>
       <div className="mx-4p p-15px mt-40px bg-white all-corn-box-shadow rounded-sm mb-90px">
         <div className="lg:flex pri-text-color-1 d-none flex-space-between mb-30px">
-          <Filter title="organization" />
-          <Filter title="username" />
-          <Filter title="email" />
-          <Filter title="phone number" />
-          <Filter title="date joined" />
-          <Filter title="status" />
+          <Filter
+            onClick={() => setFilter({ ...resetFilter, organization: true })}
+            resetFilter={() =>
+              setFilter({ ...resetFilter, organization: false })
+            }
+            title="organization"
+            filter={filter}
+          />
+          <Filter
+            onClick={() => alert("Feature coming soon...")}
+            filter={filter}
+            title="username"
+          />
+          <Filter
+            onClick={() => alert("Feature coming soon...")}
+            filter={filter}
+            title="email"
+          />
+          <Filter
+            onClick={() => alert("Feature coming soon...")}
+            filter={filter}
+            title="phone number"
+          />
+          <Filter
+            onClick={() => alert("Feature coming soon...")}
+            filter={filter}
+            title="date joined"
+          />
+          <Filter
+            onClick={() => alert("Feature coming soon...")}
+            filter={filter}
+            title="status"
+          />
           <img className="hidden" src={threeDots} alt="3-dots" />
         </div>
         {loading ? (

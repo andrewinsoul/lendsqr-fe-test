@@ -124,6 +124,9 @@
 .w-45px {
   width: 45px;
 }
+.w-45p {
+  width: 45%;
+}
 .h-45px {
   height: 45px;
 }
@@ -247,6 +250,9 @@
 .mt-30px {
   margin-top: 30px;
 }
+.mt-10px {
+  margin-top: 10px;
+}
 .mt-0 {
   margin-top: 0;
 }
@@ -268,6 +274,10 @@
 .px-4px {
   padding-left: 4px;
   padding-right: 4px;
+}
+.px-15px {
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .py-6px {
   padding-top: 6px;
@@ -309,8 +319,12 @@
 .grey-border-color {
   border-color: rgba(200, 200, 200, 0.4);
 }
-.red-border-color {
-  border-color: $error-color;
+.dark-border-color {
+  border-color: rgba(0, 0, 0, 0.6);
+}
+
+.w-190p {
+  width: 190%
 }
 .primary2-border-color {
   border-color: $primary-color2;
@@ -347,6 +361,9 @@
 }
 .top-0 {
   top: 0;
+}
+.top-40 {
+  top: 40px;
 }
 .bottom-0 {
   bottom: 0;
