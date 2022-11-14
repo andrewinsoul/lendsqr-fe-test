@@ -130,7 +130,7 @@ export const UserDetails = () => {
               </div>
             </div>
           </div>
-          <div style={{}}>
+          <div>
             <p>{`₦${Number(
               UserDetailData?.accountBalance
             ).toLocaleString()}`}</p>
@@ -335,7 +335,7 @@ export const UserDetails = () => {
       <div className="flex flex-align-center lg:flex-row flex-col flex-space-between mx-4p">
         <h3 className="pri-text-color-1">User Details</h3>
         <div className="flex-row mb-30px lg:mb-0">
-          <button className="uppercase red-border-color red-text bg-white rounded-sm p-9px bw-1 letter-spacing bold pointer">
+          <button className="uppercase b-red-color red-text bg-white rounded-sm p-9px bw-1 letter-spacing bold pointer">
             blacklist user
           </button>
           <button className="uppercase primary2-border-color bg-white rounded-sm p-9px bw-1 status-active-text-color letter-spacing bold ml-8px pointer">
