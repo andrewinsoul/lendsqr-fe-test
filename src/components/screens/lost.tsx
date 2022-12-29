@@ -4,7 +4,11 @@ import lost from "../../images/svgs/lost.svg";
 export const Lost = () => {
   const navigate = useNavigate();
   const onClickHandler = () => {
-    // navigate("/auth/dashboard");
+    if (localStorage.getItem("token")) {
+      navigate("/auth/dashboard");
+    } else {
+      navigate("/login", { replace: true });
+    }
   };
   return (
     <div className="flex h-full flex-justify-center flex-align-center work-sans flex-col pri-text-color-1">

@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card } from "../common/card";
 import users from "../../images/svgs/users.svg";
+import eye from "../../images/svgs/eye.svg";
+import karma from "../../images/svgs/karma.svg";
+import whiteList from "../../images/svgs/whitelist.svg";
 import activeUsers from "../../images/svgs/active-users.svg";
 import usersWithLoans from "../../images/svgs/users-with-loan.svg";
 import usersWithSavings from "../../images/svgs/users-with-saving.svg";
@@ -10,10 +13,27 @@ import { statusEnum } from "../../constants";
 import threeDots from "../../images/svgs/three-dots.svg";
 import { Status, StatusText } from "../common/displayStatus";
 
+const resetFilter = {
+  organization: false,
+  username: false,
+  email: false,
+  phoneNumber: false,
+  status: false,
+  dateJoined: false,
+};
+
 export const Dashboard = () => {
   const navigate = useNavigate();
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState({
+    organization: false,
+    username: false,
+    email: false,
+    phoneNumber: false,
+    status: false,
+    dateJoined: false,
+  });
   const [loading, setLoaing] = useState(false);
+  const [viewOptions, setViewOptions] = useState<any>({});
   const [usersList, setUsersList] = useState<[] | null>([]);
 
   useEffect(() => {
@@ -62,12 +82,39 @@ export const Dashboard = () => {
       </div>
       <div className="mx-4p p-15px mt-40px bg-white all-corn-box-shadow rounded-sm mb-90px">
         <div className="lg:flex pri-text-color-1 d-none flex-space-between mb-30px">
-          <Filter title="organization" />
-          <Filter title="username" />
-          <Filter title="email" />
-          <Filter title="phone number" />
-          <Filter title="date joined" />
-          <Filter title="status" />
+          <Filter
+            onClick={() => setFilter({ ...resetFilter, organization: true })}
+            resetFilter={() =>
+              setFilter({ ...resetFilter, organization: false })
+            }
+            title="organization"
+            filter={filter}
+          />
+          <Filter
+            onClick={() => alert("Feature coming soon...")}
+            filter={filter}
+            title="username"
+          />
+          <Filter
+            onClick={() => alert("Feature coming soon...")}
+            filter={filter}
+            title="email"
+          />
+          <Filter
+            onClick={() => alert("Feature coming soon...")}
+            filter={filter}
+            title="phone number"
+          />
+          <Filter
+            onClick={() => alert("Feature coming soon...")}
+            filter={filter}
+            title="date joined"
+          />
+          <Filter
+            onClick={() => alert("Feature coming soon...")}
+            filter={filter}
+            title="status"
+          />
           <img className="hidden" src={threeDots} alt="3-dots" />
         </div>
         {loading ? (
@@ -88,9 +135,8 @@ export const Dashboard = () => {
               index: Number
             ) => (
               <div
-                onClick={() => navigate(`/auth/user/detail/${item.id}`)}
                 key={`item-${index}-${item.phoneNumber}`}
-                className="flex pointer flex-row flex-space-between td-cont pri-text-color-1 flex-align-center"
+                className="flex flex-row flex-space-between td-cont pri-text-color-1 flex-align-center"
               >
                 <div className="block lg:d-none size-13px">
                   <div className="">
@@ -112,7 +158,35 @@ export const Dashboard = () => {
                 <div className="lg:td d-none lg:block">{item.phoneNumber}</div>
                 <div className="lg:td d-none lg:block">{item.createdAt}</div>
                 <Status item={item} />
-                <img src={threeDots} alt="3-dots" />
+                {viewOptions[String(item.id)] ? (
+                  <div className="relative">
+                    <div className="bold -right-15 top-5 grey-border-color p-10px rounded-sm all-corn-box-shadow absolute bg-white z-1 bw-1 b-solid w-190px">
+                      <div
+                        className="flex pointer flex-align-center"
+                        onClick={() => navigate(`/auth/user/detail/${item.id}`)}
+                      >
+                        <img src={eye} alt="view icon" />
+                        <small className="ml-8px">View Details</small>
+                      </div>
+                      <div className="flex pointer flex-align-center my-25px">
+                        <img src={karma} alt="blaclist icon" />
+                        <small className="ml-8px">Blacklist User</small>
+                      </div>
+                      <div className="flex pointer flex-align-center">
+                        <img src={whiteList} alt="activate icon" />
+                        <small className="ml-8px">Activate User</small>
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
+                <img
+                  src={threeDots}
+                  alt="3-dots"
+                  className="pointer"
+                  onClick={() =>
+                    setViewOptions({ ...{}, [item.id]: !viewOptions[item.id] })
+                  }
+                />
               </div>
             )
           )
